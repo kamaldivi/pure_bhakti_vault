@@ -1,0 +1,16 @@
+# Core dependencies
+psycopg2-binary==2.9.9
+python-dotenv==1.0.0
+PyMuPDF==1.26.3
+pandas==2.3.1
+openpyxl==3.1.5
+tqdm==4.66.2
+Pillow==10.4.0
+requests==2.32.4
+lxml==6.0.0
+
+# Supporting libraries
+numpy==2.3.2
+python-dateutil==2.9.0.post0
+pytz==2025.2
+tzdata==2025.2

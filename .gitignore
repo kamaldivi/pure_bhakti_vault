@@ -1,0 +1,71 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env
+.venv/
+venv/
+ENV/
+env/
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Operating System
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Project specific
+*.log
+*.csv
+*.xlsx
+*.jsonl
+last_batch_id.txt
+scan_details/
+scan_summary.csv
+pdf_metadata_export.xlsx
+extracted_glossary.csv
+batch_errors.jsonl
+batch_output.jsonl
+
+# Data directories
+data/
+database_design/
+
+# Temporary files
+data/tmp/
+*.tmp
+*.temp
