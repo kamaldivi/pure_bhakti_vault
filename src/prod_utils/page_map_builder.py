@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-page_map_builder_refactored.py
-==============================
+page_map_builder.py
+===================
 
 Purpose
 -------
@@ -11,19 +11,17 @@ For each PDF file:
 1) Resolve `book_id` using your existing DB util (`PureBhaktiVaultDB.get_book_id_by_pdf_name()`).
 2) Try to extract page labels via PyMuPDF (`page.get_label()`), normalizing any PDF hex-string
    chunks like `<FEFF0061>` -> `a`.
-3) If page labels are missing or are trivial Arabic 1..N, call a **fallback** extractor from
-   your separate module `page_map_builder.py` (your complex header/footer matching logic) to derive labels.
+3) If page labels are missing or empty, use page_number as page_label (e.g., page 5 gets label "5").
 4) Upsert results into `page_map` using a single direct SQL `INSERT ... ON CONFLICT`.
    - page_number = page_index + 1 (1-based)
-   - page_label  = normalized label (or fallback-computed label)
+   - page_label  = normalized label (or page_number as string if no label)
    - page_type   = 'Primary' (default)
 
 Design Principles
 -----------------
 - **No duplication** of DB code: we use `PureBhaktiVaultDB` for connection/cursor mgmt and book lookups.
-- **Thin integration** with your header/footer logic: imported dynamically from `page_map_builder.py`
-  only if needed (when labels are missing/plain). You can evolve that module independently.
-- **Graceful degradation**: If both native labels and fallback fail, we still insert a sane 1..N sequence.
+- **Simple fallback**: When embedded labels are missing, use page_number as the label.
+- **No configuration required**: No dependency on header_height, footer_height, or page_label_location from book table.
 
 Environment
 -----------
@@ -38,7 +36,7 @@ Install
 
 Run
 ---
-    python page_map_builder_refactored.py
+    python page_map_builder.py
 
 Schema Assumptions
 ------------------
@@ -50,12 +48,11 @@ import os
 import re
 import logging
 from pathlib import Path
-from importlib import import_module
 
 # .env support
 try:
     from dotenv import load_dotenv
-    load_dotenv()
+    load_dotenv(override=True)
 except Exception:
     pass
 
@@ -64,7 +61,6 @@ from psycopg2.extras import execute_values
 
 # Your DB util (already provided by you)
 from pure_bhakti_vault_db import PureBhaktiVaultDB
-from page_map_utils import get_page_map_tuples
 
 
 # --------------------------------------------------------------------------------------
@@ -144,18 +140,34 @@ class PageMapBuilderRef:
         except Exception as e:
             log.error("Failed to open %s: %s", pdf_path, e)
             return
-        
+
+        # Check if PDF has embedded page labels
         defs = doc.get_page_labels()
         rows = []
+
         if not defs:
-            rows = get_page_map_tuples(book_id)
-        else:    
+            # No embedded page labels - use page_number as page_label
+            log.info("No embedded page labels found, using page_number as page_label")
+            for i in range(doc.page_count):
+                page_number = i + 1
+                page_label = str(page_number)  # Use page_number as label
+                rows.append((book_id, page_number, page_label, "Primary"))
+        else:
+            # Extract embedded page labels
+            log.info("Found embedded page labels, extracting...")
             for i in range(doc.page_count):
                 page = doc.load_page(i)
                 raw = page.get_label() or ""
                 label = normalize_page_label(raw)
+
+                # If normalized label is empty, fallback to page_number
+                if not label or not label.strip():
+                    label = str(i + 1)
+
                 page_number = i + 1
                 rows.append((book_id, page_number, label, "Primary"))
+
+        doc.close()
 
         if not rows:
             log.info("No pages found for %s", pdf_path.name)

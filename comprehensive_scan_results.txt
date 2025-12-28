@@ -1,0 +1,240 @@
+Comprehensive Devanagari Font Scan
+====================================================================================================
+Scanning all PDFs in /opt/pbb_static_content/pbb_pdf_files/
+Sampling 20 pages per book for Devanagari fonts...
+====================================================================================================
+[1/144] Scanning: Acarya_Kesari_2nd_ed_2013.pdf... No Devanagari
+[2/144] Scanning: Arcana-dipika-3Ed-2017.pdf... No Devanagari
+[3/144] Scanning: BRSB-3Ed-2017.pdf... No Devanagari
+[4/144] Scanning: Beyond All Religions-v1.4.pdf... No Devanagari
+[5/144] Scanning: Beyond-Liberation-மோட்சத்திற்கும் அப்பால் - v3.pdf... No Devanagari
+[6/144] Scanning: Bhajan Book - பஜனை புத்தகம் v6.0.pdf... No Devanagari
+[7/144] Scanning: Bhajan Book Spiral v5.3.pdf... No Devanagari
+[8/144] Scanning: Bhajana-rahasya-eng-2ed.pdf... No Devanagari
+[9/144] Scanning: Bhakti-rasayan_4ed.pdf... No Devanagari
+[10/144] Scanning: Bhakti-tattva-viveka_4Ed_2012.pdf... No Devanagari
+[11/144] Scanning: Brihad-bhagavatamrta_2nd_canto_1st_part_1st_ed.pdf... ✓ FOUND Devanagari!
+[12/144] Scanning: Butter Thief - வெண்ணைய் திருடன் - v3.5.pdf... No Devanagari
+[13/144] Scanning: ButterThief_4th_ed_2010.pdf... No Devanagari
+[14/144] Scanning: CC_Adi_lila_Part-1_English.pdf... ✓ FOUND Devanagari!
+[15/144] Scanning: Correct Maha Mantra - சரியான மகா மந்திரம் - v1.4.pdf... No Devanagari
+[16/144] Scanning: Daily-Kirtan-Handbook-1Ed-2016.pdf... No Devanagari
+[17/144] Scanning: Essence_of_BG_5th_ed_2014.pdf... No Devanagari
+[18/144] Scanning: Essence_of_all_advice_4ed.pdf... ✓ FOUND Devanagari!
+[19/144] Scanning: Gaudiya-Giti-guccha-7th-ed-2016.pdf... No Devanagari
+[20/144] Scanning: Gauravani_Pracarine_eng.pdf... No Devanagari
+[21/144] Scanning: Gita-Govinda-2Ed-2017.pdf... No Devanagari
+[22/144] Scanning: Going_beyond_vaikuntha_4ed.pdf... No Devanagari
+[23/144] Scanning: Gokul Bhajan Bhagavad Gita - பகவத் கீதை 108 - v2.0.pdf... No Devanagari
+[24/144] Scanning: Gokul Kids-v1.pdf... No Devanagari
+[25/144] Scanning: Guru-devatatma-4Ed-2012.pdf... No Devanagari
+[26/144] Scanning: Harinama_Maha-mantra-3Ed-2012.pdf... No Devanagari
+[27/144] Scanning: Harmony.pdf... No Devanagari
+[28/144] Scanning: Hidden_Path_rvc.pdf... No Devanagari
+[29/144] Scanning: Impressions_of_Bhakti_1ed_2014.pdf... No Devanagari
+[30/144] Scanning: Jagannatha-Ratha-yatra-1st-ed.pdf... No Devanagari
+[31/144] Scanning: Jaiva-dharma-5Ed-2013.pdf... No Devanagari
+[32/144] Scanning: Journey_of_the_soul_2011_2ed.pdf... No Devanagari
+[33/144] Scanning: Kriti-Ratna-eng-2ed.pdf... ✓ FOUND Devanagari!
+[34/144] Scanning: Letters_from_america_2013.pdf... No Devanagari
+[35/144] Scanning: Life_of_humble_service_1ed.pdf... No Devanagari
+[36/144] Scanning: Lord-of-Sweetness-1ed-2015.pdf... No Devanagari
+[37/144] Scanning: Madhurya-kadambini-eng-1ed.pdf... No Devanagari
+[38/144] Scanning: Mahaprabhu_Gift_2ed_eng.pdf... No Devanagari
+[39/144] Scanning: Mahaprabhu_Svayam_Bhagavan_eng.pdf... No Devanagari
+[40/144] Scanning: Maharsi_Durvasa_2nd_ed_2012.pdf... No Devanagari
+[41/144] Scanning: Manah-siksa_4Ed_2012.pdf... ✓ FOUND Devanagari!
+[42/144] Scanning: My_Siksa-guru_Priya-bandhu_4Ed_2012.pdf... No Devanagari
+[43/144] Scanning: NamacaryaHaridasThakura-2017-ed1.pdf... No Devanagari
+[44/144] Scanning: Navadvipa_pocket_book_1ed_2014.pdf... No Devanagari
+[45/144] Scanning: Nectar_of_Govinda-lila_4Ed_2e_print_2013.pdf... No Devanagari
+[46/144] Scanning: OurEternalNature_2Ed_2013.pdf... No Devanagari
+[47/144] Scanning: Padyavali_1ed.pdf... No Devanagari
+[48/144] Scanning: Prabandhavali.pdf... No Devanagari
+[49/144] Scanning: Prema-pradipa-eng-1ed.pdf... No Devanagari
+[50/144] Scanning: Principle_of_sri_guru.pdf... No Devanagari
+[51/144] Scanning: RagaVartmaCandrika_eng_2nd_ed.pdf... No Devanagari
+[52/144] Scanning: Rasa-panca-dhyayi-eng-v1.pdf... No Devanagari
+[53/144] Scanning: RaysoftheHarmonist-no1-vol_1_1.pdf... No Devanagari
+[54/144] Scanning: RaysoftheHarmonist-no10-Summer2002.pdf... No Devanagari
+[55/144] Scanning: RaysoftheHarmonist-no11-Karttika2002.pdf... No Devanagari
+[56/144] Scanning: RaysoftheHarmonist-no12-gp2003.pdf... No Devanagari
+[57/144] Scanning: RaysoftheHarmonist-no13-Karttika2003.pdf... ✓ FOUND Devanagari!
+[58/144] Scanning: RaysoftheHarmonist-no14-Karttika2004.pdf... No Devanagari
+[59/144] Scanning: RaysoftheHarmonist-no15-Kartik2005.pdf... No Devanagari
+[60/144] Scanning: RaysoftheHarmonist-no16-Kartik2006.pdf... No Devanagari
+[61/144] Scanning: RaysoftheHarmonist-no17-Kartik2007.pdf... No Devanagari
+[62/144] Scanning: RaysoftheHarmonist-no18-Kartik2008.pdf... No Devanagari
+[63/144] Scanning: RaysoftheHarmonist-no19-GaurPurnima2009.pdf... No Devanagari
+[64/144] Scanning: RaysoftheHarmonist-no2-vol_1_2.pdf... No Devanagari
+[65/144] Scanning: RaysoftheHarmonist-no20-Kartik2009.pdf... No Devanagari
+[66/144] Scanning: RaysoftheHarmonist-no21-GP2010.pdf... No Devanagari
+[67/144] Scanning: RaysoftheHarmonist-no22-Kartik2010.pdf... ✓ FOUND Devanagari!
+[68/144] Scanning: RaysoftheHarmonist-no23_Vyasapuja_edition2011.pdf... No Devanagari
+[69/144] Scanning: RaysoftheHarmonist-no24-Entering_Nitya-lila.pdf... ✓ FOUND Devanagari!
+[70/144] Scanning: RaysoftheHarmonist-no25_Tirobhava_ed.pdf... ✓ FOUND Devanagari!
+[71/144] Scanning: RaysoftheHarmonist-no26-2014.pdf... ✓ FOUND Devanagari!
+[72/144] Scanning: RaysoftheHarmonist-no3-June1999.pdf... No Devanagari
+[73/144] Scanning: RaysoftheHarmonist-no3-vol_2_1.pdf... No Devanagari
+[74/144] Scanning: RaysoftheHarmonist-no4-vol_2_2.pdf... No Devanagari
+[75/144] Scanning: RaysoftheHarmonist-no5-vol_3_1.pdf... No Devanagari
+[76/144] Scanning: RaysoftheHarmonist-no6-Summer2000.pdf... No Devanagari
+[77/144] Scanning: RaysoftheHarmonist-no7-Winter2000.pdf... ✓ FOUND Devanagari!
+[78/144] Scanning: RaysoftheHarmonist-no8-Summer2001.pdf... ✓ FOUND Devanagari!
+[79/144] Scanning: RaysoftheHarmonist-no9-Winter2001.pdf... No Devanagari
+[80/144] Scanning: Real Goal of Our Life.pdf... No Devanagari
+[81/144] Scanning: Remembering Srila Prabhupada-web.pdf... No Devanagari
+[82/144] Scanning: Rupa_Goswami_2ed_2014.pdf... No Devanagari
+[83/144] Scanning: Secret_truths_of_the_Bhagavatam_2nd_ed.pdf... No Devanagari
+[84/144] Scanning: Secrets_of_the_Undiscovered_Self.pdf... No Devanagari
+[85/144] Scanning: Shiva_Tattva.pdf... No Devanagari
+[86/144] Scanning: Siksastaka_4Ed_2011.pdf... No Devanagari
+[87/144] Scanning: Slokamrta-bindhu_2ed_2012.pdf... No Devanagari
+[88/144] Scanning: Soul_of_Book_distribution_1Ed_2012.pdf... No Devanagari
+[89/144] Scanning: Sri-Guru-Vandana-eng.pdf... ✓ FOUND Devanagari!
+[90/144] Scanning: SriBrihad-Bhagavatamrtam-Canto Oneeng-part1.pdf... ✓ FOUND Devanagari!
+[91/144] Scanning: SriRadha-1ed-2016.pdf... No Devanagari
+[92/144] Scanning: Sri_Slokamritam.pdf... No Devanagari
+[93/144] Scanning: Srila_Gurudeva-the_Supreme_Treasure_vol1.pdf... No Devanagari
+[94/144] Scanning: Srila_Gurudeva-the_Supreme_Treasure_vol2.pdf... No Devanagari
+[95/144] Scanning: Svarupa-of-the-Jiva-2019-ed-eng.pdf... No Devanagari
+[96/144] Scanning: Tamil - Essence of Bhagavad Gita - பகவத் கீதையின் சாரம் v4.1.pdf... No Devanagari
+[97/144] Scanning: Tamil-Fearless-Prince-அஞ்சாத இளவரசன்-v2.3.pdf... No Devanagari
+[98/144] Scanning: Tamil-Going Beyond Vaikuntha-வைகுண்டத்திற்கும் அப்பால்-v2.5.pdf... No Devanagari
+[99/144] Scanning: Tamil-Guru-Devatatma-குரு தேவதாத்மா-v2.3.pdf... No Devanagari
+[100/144] Scanning: Tamil-My-Siksha-guru-and-Priya-bandhu-எனது சிக்ஷா குருவும் பிரிய நண்பரும் -v1.1 .pdf... No Devanagari
+[101/144] Scanning: Tamil-Upadesamrta-உபதேச அம்ருதம்-v2.3.pdf... No Devanagari
+[102/144] Scanning: Temple Worship Book - கோவில் வழிபாட்டுப் புத்தகம்.pdf... No Devanagari
+[103/144] Scanning: Temple guide-v8.0.pdf... No Devanagari
+[104/144] Scanning: Their-Lasting-Relation.pdf... No Devanagari
+[105/144] Scanning: To_Be-Controlled-By-Love-v2.pdf... No Devanagari
+[106/144] Scanning: True Dharma of Jivas - ஜீவனின் உண்மையான தர்மம் v3.0.pdf... No Devanagari
+[107/144] Scanning: True-Servant-True Master.pdf... No Devanagari
+[108/144] Scanning: True_Sentiments_of_soul_ver1.pdf... No Devanagari
+[109/144] Scanning: Ujjvala-nilamani-kirana_1Ed_2013.pdf... No Devanagari
+[110/144] Scanning: Upadesamrta-eng-3_1-ed.pdf... No Devanagari
+[111/144] Scanning: Vraja Mandala Parikrama_2ed.pdf... No Devanagari
+[112/144] Scanning: Way_of_Love_7Ed-2013.pdf... No Devanagari
+[113/144] Scanning: WhenKindnessCompassionTakeForm.pdf... No Devanagari
+[114/144] Scanning: beyond_liberation_4th_ed.pdf... No Devanagari
+[115/144] Scanning: beyond_nirvana_1st_ed_2003.pdf... No Devanagari
+[116/144] Scanning: bhagavad-gita-4ed-eng.pdf... ✓ FOUND Devanagari!
+[117/144] Scanning: camatkara-candrika_3ed.pdf... No Devanagari
+[118/144] Scanning: confidential_secrets_of_bhajana.pdf... No Devanagari
+[119/144] Scanning: damodarastakam_2ed_eng.pdf... No Devanagari
+[120/144] Scanning: dasa_avatar.pdf... No Devanagari
+[121/144] Scanning: fearless_prince_3rd_ed.pdf... ✓ FOUND Devanagari!
+[122/144] Scanning: five_essential_essays.pdf... ✓ FOUND Devanagari!
+[123/144] Scanning: gopi_gita.pdf... No Devanagari
+[124/144] Scanning: happiness_in_a_fools_paradise.pdf... No Devanagari
+[125/144] Scanning: hari_kathamrita_vol1.pdf... ✓ FOUND Devanagari!
+[126/144] Scanning: hari_kathamrita_vol2.pdf... No Devanagari
+[127/144] Scanning: navadvipa-dhama-mahatmya_1st_eng.pdf... No Devanagari
+[128/144] Scanning: navadvipa_dham_2nd_ed_high_res.pdf... No Devanagari
+[129/144] Scanning: origin-of-ratha-yatra.pdf... No Devanagari
+[130/144] Scanning: our-gurus-one-in-siddhanta.pdf... No Devanagari
+[131/144] Scanning: pinnacle_of_devotion_2nd_ed.pdf... No Devanagari
+[132/144] Scanning: prema-samput_2ed.pdf... No Devanagari
+[133/144] Scanning: radha_krsna_ganodesha_dipika_ed1.pdf... No Devanagari
+[134/144] Scanning: sankalpa-kalpadruma_2ed_2015.pdf... No Devanagari
+[135/144] Scanning: sri-brahma-samhita.pdf... ✓ FOUND Devanagari!
+[136/144] Scanning: sri_raya_ramananda_samvad_1st_eng.pdf... No Devanagari
+[137/144] Scanning: the_true_conception.pdf... No Devanagari
+[138/144] Scanning: utkalika-vallari.pdf... No Devanagari
+[139/144] Scanning: vaisnava_siddhanta_mala_1st_ed_2010.pdf... No Devanagari
+[140/144] Scanning: venu-gita.pdf... No Devanagari
+[141/144] Scanning: walking_ws_2007_1st_ed.pdf... No Devanagari
+[142/144] Scanning: walking_ws_2008_1st_ed.pdf... No Devanagari
+[143/144] Scanning: walking_ws_2009_1st_ed.pdf... No Devanagari
+[144/144] Scanning: walking_ws_2010_1st_ed.pdf... No Devanagari
+
+====================================================================================================
+SUMMARY: 19 books with Devanagari fonts
+====================================================================================================
+
+1. Brihad-bhagavatamrta_2nd_canto_1st_part_1st_ed.pdf
+   - CAMJMK+AARituPlus2-Regular
+   - CLKHJG+AARituPlus2-Regular
+
+2. CC_Adi_lila_Part-1_English.pdf
+   - XTIKBO+Mangal
+
+3. Essence_of_all_advice_4ed.pdf
+   - UNETVF+Sanskrit-Garamond
+   - IGXZOQ+Sanskrit-Garamond
+   - QCZCMK+Sanskrit-Garamond
+   - JNBMGP+Sanskrit-Garamond
+   - TZBWMM+Sanskrit-Garamond
+   - KFBDYR+Sanskrit-Garamond
+
+4. Kriti-Ratna-eng-2ed.pdf
+   - MOEYIV+AARituPlus2-Regular
+
+5. Manah-siksa_4Ed_2012.pdf
+   - TQUMMB+AARituPlus2TEMP
+
+6. RaysoftheHarmonist-no13-Karttika2003.pdf
+   - ODIGAB+Sanskrit-Palatino,Bold
+   - PDKNEG+Sanskrit-Palatino,Bold
+   - OGOAAP+Sanskrit-Palatino,Bold
+   - ACNEFE+Sanskrit-Palatino,Bold
+
+7. RaysoftheHarmonist-no22-Kartik2010.pdf
+   - CJOEYL+AARituPlus2-Regular
+
+8. RaysoftheHarmonist-no24-Entering_Nitya-lila.pdf
+   - BNLUBI+AARituPlus2-Regular
+
+9. RaysoftheHarmonist-no25_Tirobhava_ed.pdf
+   - GEHEBY+AARituPlus2-Regular
+
+10. RaysoftheHarmonist-no26-2014.pdf
+   - GDNNHX+AARituPlus2-Regular
+   - PQEFKJ+AARituPlus2-Regular
+   - FHINTH+AARituPlus2-Regular
+   - PHSUMX+AARituPlus2-Regular
+   - MUFCSA+AARituPlus2-Regular
+
+11. RaysoftheHarmonist-no7-Winter2000.pdf
+   - GPHNCJ+Sanskrit.Times.Bold0200
+   - GEEIIK+Sanskrit.Times.Roman0200
+   - IPICEA+Sanskrit.Times.Roman0200
+   - JFGDHG+Sanskrit.Times.Roman0200
+   - GEEDKA+Sanskrit.Times.Bold.Italic0400
+   - HDBNIM+Sanskrit.Times.Roman0200
+   - FNKODE+Sanskrit.Times.Roman0200
+   - GBOHDP+Sanskrit.Times.Roman0200
+   - JCBPDM+Sanskrit.Times.Roman0133.313
+
+12. RaysoftheHarmonist-no8-Summer2001.pdf
+   - KHFGHF+Sanskrit.Times.Roman0183.313
+   - KDDCJG+Sanskrit.Times.Roman0183.313
+   - KBHLEA+Sanskrit.Times.Roman0200
+   - KLMNCF+Sanskrit.Times.Roman0183.313
+   - JPGILJ+Sanskrit.Times.Roman0200
+   - KPODEN+Sanskrit.Times.Roman0183.313
+   - KBIJBG+Sanskrit.Times.Roman0183.313
+
+13. Sri-Guru-Vandana-eng.pdf
+   - YHISSR+AARituPlus2-Numbers-Regular
+
+14. SriBrihad-Bhagavatamrtam-Canto Oneeng-part1.pdf
+   - LUYZFF+AdobeDevanagari-Bold-SC700
+   - LUYZFF+AdobeDevanagari-Bold
+   - KMOTRH+AARituPlus2-Bold
+
+15. bhagavad-gita-4ed-eng.pdf
+   - RTVHAG+AARituPlus2-Regular
+
+16. fearless_prince_3rd_ed.pdf
+   - DSYURH+Sanskrit-HelveticaBold
+   - NPWCBN+Sanskrit-Helvetica
+
+17. five_essential_essays.pdf
+   - EEDLFO+SanskritPalatinoRoman
+
+18. hari_kathamrita_vol1.pdf
+   - AOPOAH+DevanagariExtLA
+
+19. sri-brahma-samhita.pdf
+   - EKHHHN+AARitu-Bold

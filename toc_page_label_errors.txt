@@ -1,0 +1,622 @@
+=== TOC Page Label Population Error Report ===
+Generated: time.struct_time(tm_year=2025, tm_mon=9, tm_mday=21, tm_hour=9, tm_min=31, tm_sec=38, tm_wday=6, tm_yday=264, tm_isdst=1)
+Total unresolvable records: 97
+
+Book ID 9: 22 unresolvable records
+------------------------------------------------------------
+TOC ID: 470
+Level: 2
+Label: Verses 1–24
+Parent: 469
+Error: No children with valid page_label_raw found
+
+TOC ID: 471
+Level: 2
+Label: Verses 25–53
+Parent: 469
+Error: No children with valid page_label_raw found
+
+TOC ID: 472
+Level: 2
+Label: Verses 54–87
+Parent: 469
+Error: No children with valid page_label_raw found
+
+TOC ID: 473
+Level: 2
+Label: Verses 88–109
+Parent: 469
+Error: No children with valid page_label_raw found
+
+TOC ID: 474
+Level: 2
+Label: Verses 110–150
+Parent: 469
+Error: No children with valid page_label_raw found
+
+TOC ID: 475
+Level: 2
+Label: Verses 151–182
+Parent: 469
+Error: No children with valid page_label_raw found
+
+TOC ID: 476
+Level: 2
+Label: Verses 183–219
+Parent: 469
+Error: No children with valid page_label_raw found
+
+TOC ID: 478
+Level: 2
+Label: Verses 1–31
+Parent: 477
+Error: No children with valid page_label_raw found
+
+TOC ID: 479
+Level: 2
+Label: Verses 32–75
+Parent: 477
+Error: No children with valid page_label_raw found
+
+TOC ID: 480
+Level: 2
+Label: Verses 76–128
+Parent: 477
+Error: No children with valid page_label_raw found
+
+TOC ID: 481
+Level: 2
+Label: Verses 129–159
+Parent: 477
+Error: No children with valid page_label_raw found
+
+TOC ID: 482
+Level: 2
+Label: Verses 160–240
+Parent: 477
+Error: No children with valid page_label_raw found
+
+TOC ID: 484
+Level: 2
+Label: Verses 1–59
+Parent: 483
+Error: No children with valid page_label_raw found
+
+TOC ID: 485
+Level: 2
+Label: Verses 60–83
+Parent: 483
+Error: No children with valid page_label_raw found
+
+TOC ID: 486
+Level: 2
+Label: Verses 84–186
+Parent: 483
+Error: No children with valid page_label_raw found
+
+TOC ID: 488
+Level: 2
+Label: Verses 1–19
+Parent: 487
+Error: No children with valid page_label_raw found
+
+TOC ID: 489
+Level: 2
+Label: Verses 20–87
+Parent: 487
+Error: No children with valid page_label_raw found
+
+TOC ID: 490
+Level: 2
+Label: Verses 88–107
+Parent: 487
+Error: No children with valid page_label_raw found
+
+TOC ID: 491
+Level: 2
+Label: Verses 108–200
+Parent: 487
+Error: No children with valid page_label_raw found
+
+TOC ID: 492
+Level: 2
+Label: Verses 201–235
+Parent: 487
+Error: No children with valid page_label_raw found
+
+TOC ID: 493
+Level: 2
+Label: Verses 236–249
+Parent: 487
+Error: No children with valid page_label_raw found
+
+TOC ID: 494
+Level: 2
+Label: Verses 250–274
+Parent: 487
+Error: No children with valid page_label_raw found
+
+
+Book ID 15: 5 unresolvable records
+------------------------------------------------------------
+TOC ID: 507
+Level: 1
+Label: Preface
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 509
+Level: 1
+Label: Predawn
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 536
+Level: 1
+Label: Noon
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 542
+Level: 1
+Label: Evening
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 557
+Level: 1
+Label: Special Kīrtanas
+Parent: None
+Error: No children with valid page_label_raw found
+
+
+Book ID 22: 15 unresolvable records
+------------------------------------------------------------
+TOC ID: 609
+Level: 1
+Label: Śrī Guru
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 622
+Level: 1
+Label: Vaiṣṇavas
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 636
+Level: 1
+Label: Śrīla Rūpa Gosvāmī
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 645
+Level: 1
+Label: Pañca-tattva
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 660
+Level: 1
+Label: Śrī Gaurāṅga
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 684
+Level: 1
+Label: Gaurāṅga and Nityānanda
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 696
+Level: 1
+Label: Gaurāṅga and His Associates
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 708
+Level: 1
+Label: Śrī Rādhā
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 724
+Level: 1
+Label: Śrī Śrī Rādhā-Kṛṣṇa
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 730
+Level: 1
+Label: Śrī Kṛṣṇa
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 815
+Level: 1
+Label: Selected songs from Śaraṇāgati
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 841
+Level: 1
+Label: Ārati
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 866
+Level: 1
+Label: Sanskrit Stotras
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 901
+Level: 1
+Label: Sanskrit Songs
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 923
+Level: 1
+Label: Hindi & Braj Bhāṣā Kīrtanas
+Parent: None
+Error: No children with valid page_label_raw found
+
+
+Book ID 25: 1 unresolvable records
+------------------------------------------------------------
+TOC ID: 3536
+Level: 1
+Label: Worldwide Centers and Contacts
+Parent: None
+Error: No children with valid page_label_raw found
+
+
+Book ID 39: 2 unresolvable records
+------------------------------------------------------------
+TOC ID: 1423
+Level: 1
+Label: Part One
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 1446
+Level: 1
+Label: Part Two
+Parent: None
+Error: No children with valid page_label_raw found
+
+
+Book ID 41: 23 unresolvable records
+------------------------------------------------------------
+TOC ID: 1499
+Level: 1
+Label: First Shower of Nectar
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 1500
+Level: 2
+Label: Pre-eminence of Bhakti
+Parent: 1499
+Error: No children with valid page_label_raw found
+
+TOC ID: 1532
+Level: 1
+Label: Second Shower of Nectar
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 1533
+Level: 2
+Label: Delineation of the First Three Stages of Bhakti
+Parent: 1532
+Error: No children with valid page_label_raw found
+
+TOC ID: 1534
+Level: 3
+Label: Sādhana-bhakti ~ Śraddhā, Sādhu-saṅga & Bhajana-kriyā
+Parent: 1533
+Error: No children with valid page_label_raw found
+
+TOC ID: 1558
+Level: 1
+Label: Third Shower of Nectar
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 1559
+Level: 2
+Label: Elimination of All Impediments to Bhakti
+Parent: 1558
+Error: No children with valid page_label_raw found
+
+TOC ID: 1560
+Level: 3
+Label: Sādhana-bhakti ~ Anartha-nivṛtti
+Parent: 1559
+Error: No children with valid page_label_raw found
+
+TOC ID: 1602
+Level: 1
+Label: Fourth Shower of Nectar
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 1603
+Level: 2
+Label: Flow of Ambrosia
+Parent: 1602
+Error: No children with valid page_label_raw found
+
+TOC ID: 1604
+Level: 3
+Label: Sādhana-bhakti ~ Niṣṭhā
+Parent: 1603
+Error: No children with valid page_label_raw found
+
+TOC ID: 1612
+Level: 1
+Label: Fifth Shower of Nectar
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 1613
+Level: 2
+Label: Realization of Transcendental Taste
+Parent: 1612
+Error: No children with valid page_label_raw found
+
+TOC ID: 1614
+Level: 3
+Label: Sādhana-bhakti ~ Ruci
+Parent: 1613
+Error: No children with valid page_label_raw found
+
+TOC ID: 1619
+Level: 1
+Label: Sixth Shower of Nectar
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 1620
+Level: 2
+Label: Enchantment of the Heart
+Parent: 1619
+Error: No children with valid page_label_raw found
+
+TOC ID: 1621
+Level: 3
+Label: Sādhana-bhakti ~ Āsakti
+Parent: 1620
+Error: No children with valid page_label_raw found
+
+TOC ID: 1632
+Level: 1
+Label: Seventh Shower of Nectar
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 1633
+Level: 2
+Label: Flow of Divine Rapture
+Parent: 1632
+Error: No children with valid page_label_raw found
+
+TOC ID: 1634
+Level: 3
+Label: Bhāva-bhakti
+Parent: 1633
+Error: No children with valid page_label_raw found
+
+TOC ID: 1646
+Level: 1
+Label: Eighth Shower of Nectar
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 1647
+Level: 2
+Label: Absolute Fulfilment of the Soul’s Yearning
+Parent: 1646
+Error: No children with valid page_label_raw found
+
+TOC ID: 1648
+Level: 3
+Label: Prema-bhakti
+Parent: 1647
+Error: No children with valid page_label_raw found
+
+
+Book ID 55: 1 unresolvable records
+------------------------------------------------------------
+TOC ID: 3900
+Level: 2
+Label: A Life Sketch of The Author
+Parent: 3895
+Error: No children with valid page_label_raw found
+
+
+Book ID 61: 2 unresolvable records
+------------------------------------------------------------
+TOC ID: 2051
+Level: 1
+Label: part one
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 2076
+Level: 1
+Label: part two
+Parent: None
+Error: No children with valid page_label_raw found
+
+
+Book ID 67: 8 unresolvable records
+------------------------------------------------------------
+TOC ID: 2140
+Level: 1
+Label: Verse One
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 2176
+Level: 1
+Label: Verse Two
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 2190
+Level: 1
+Label: Verse Three
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 2202
+Level: 1
+Label: Verse Four
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 2210
+Level: 1
+Label: Verse Five
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 2218
+Level: 1
+Label: Verse Six
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 2230
+Level: 1
+Label: Verse Seven
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 2247
+Level: 1
+Label: Verse Eight
+Parent: None
+Error: No children with valid page_label_raw found
+
+
+Book ID 74: 13 unresolvable records
+------------------------------------------------------------
+TOC ID: 2480
+Level: 1
+Label: Part One
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 2492
+Level: 1
+Label: Part Two
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 2495
+Level: 4
+Label: Excerpt from Śrī Harināma Mahā-mantra
+Parent: 2494
+Error: No children with valid page_label_raw found
+
+TOC ID: 2498
+Level: 4
+Label: Excerpt from Śrī Rāya Rāmānanda Saṁvāda
+Parent: 2497
+Error: No children with valid page_label_raw found
+
+TOC ID: 2499
+Level: 1
+Label: Part Three
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 2502
+Level: 4
+Label: Śrīla Bhaktivinoda Ṭhākura
+Parent: 2501
+Error: No children with valid page_label_raw found
+
+TOC ID: 2504
+Level: 4
+Label: Śrī Śrīmad Bhaktisiddhānta Sarasvatī Ṭhākura
+Parent: 2503
+Error: No children with valid page_label_raw found
+
+TOC ID: 2507
+Level: 4
+Label: Śrī Śrīmad Bhakti Prajñāna Keśava Gosvāmī Mahārāja
+Parent: 2506
+Error: No children with valid page_label_raw found
+
+TOC ID: 2509
+Level: 4
+Label: Śrī Śrīmad Bhaktivedānta Svāmī Mahārāja
+Parent: 2508
+Error: No children with valid page_label_raw found
+
+TOC ID: 2513
+Level: 4
+Label: Śrī Śrīmad Bhakti Pramoda Purī Gosvāmī Mahārāja
+Parent: 2512
+Error: No children with valid page_label_raw found
+
+TOC ID: 2515
+Level: 4
+Label: Śrī Śrīmad Bhaktivedānta Vāmana Gosvāmī Mahārāja
+Parent: 2514
+Error: No children with valid page_label_raw found
+
+TOC ID: 2518
+Level: 4
+Label: Śrī Śrīmad Gaura Govinda Gosvāmī Mahārāja
+Parent: 2517
+Error: No children with valid page_label_raw found
+
+TOC ID: 2521
+Level: 1
+Label: Part Four
+Parent: None
+Error: No children with valid page_label_raw found
+
+
+Book ID 80: 1 unresolvable records
+------------------------------------------------------------
+TOC ID: 2962
+Level: 1
+Label: Remembering nitya-līlā-praviṣṭa oṁ viṣṇupāda Śrī Śrīmad Bhaktivedānta Vāmana Gosvāmī Mahārāja
+Parent: None
+Error: No children with valid page_label_raw found
+
+
+Book ID 92: 4 unresolvable records
+------------------------------------------------------------
+TOC ID: 3298
+Level: 1
+Label: Part One
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 3300
+Level: 3
+Label: by Śrī Śrīmad Bhaktivedānta Nārāyaṇa Gosvāmī Mahārāja
+Parent: 3299
+Error: No children with valid page_label_raw found
+
+TOC ID: 3322
+Level: 1
+Label: Part Two
+Parent: None
+Error: No children with valid page_label_raw found
+
+TOC ID: 3324
+Level: 3
+Label: Excerpt from a lecture by Śrī Śrīmad Bhaktivedānta Vāmana Gosvāmī Mahārāja
+Parent: 3323
+Error: No children with valid page_label_raw found
+
+

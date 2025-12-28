@@ -65,6 +65,10 @@ batch_output.jsonl
 data/
 database_design/
 
+# Credentials and secrets
+credentials/
+*.json
+
 # Temporary files
 data/tmp/
 *.tmp

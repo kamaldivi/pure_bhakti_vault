@@ -1,0 +1,258 @@
+================================================================================
+SANSKRIT UTILS V2 TEST REPORT
+================================================================================
+
+PDF File: damodarastakam_2ed_eng.pdf
+Page Number: 12
+Test Date: 2025-11-25 10:40:51
+Total Characters: 2169
+Changes Made: 83
+
+--------------------------------------------------------------------------------
+SECTION 1: ORIGINAL TEXT (Extracted from PDF)
+--------------------------------------------------------------------------------
+xii  Çré DämodaräñöakamOne who worships Çré Dämodara during Kärtika month by daily reciting the prayer Çré Dämodaräñöakam, which was uttered by Çré Satyavrata Muni as it arose in his heart, will perpetually attract Çré Dämodara Himself.As stated above, Çré Dämodara Hari becomes pleased with those who worship Çré Rädhikä for Her pleasure during the month of Kärtika.2This Çré Dämodaräñöakam stava is narrated in the Padma Puräëa, where it is spoken by Çré Satyavrata Muni in the context of a conversation between Çré Närada and other sages headed by Çré Çaunaka Åñi. In his commentary on this Çré Dämodaräñöakam, Çréla Sanätana Gosvämipäda has stated, “This prayer is nitya-siddha, which means ‘eternally perfect’. It has manifested through Çré Satyavrata Muni and is capable of attracting Çré Dämodara-Kåñëa.”2 Editor’s footnote by Çré Çrémad Bhaktivedänta Vämana Gosvämé Mahäräja, from the preface to the Bengali edition: “By performing worship of Çré Rädhikä for Her pleasure during the month of Kärtika, Çré Dämodara Hari becomes very pleased. This is because Ürjeçvaré Çrématé Rädhäräëé, the controller of all potency, is the sole presiding Goddess of this month. Unless someone worships His svarüpa-çakti (internal potency), or hlädiné-çakti (pleasure potency), Dämodara Çré Kåñëa, the possessor of all potencies, does not accept his worship. Moreover, Çré Rädhä-devé, Çré Kåñëa’s antaraìga-çakti (internal potency), discards everything if She is worshipped alone without the Lord of Her life. Therefore, svarüpa rüpänuga gauòéya-vaiñëavas (Gauòéya Vaiñëavas in the line of Çré Rüpa and Çré Svarüpa Dämodara Gosvämés) have exclusively adopted the worship of Yugala (the Divine Couple) in rädhä-liìgita-vigraha – the form of Kåñëa when He is tightly embraced by Çrématé Rädhikä. For the very same reason, Çré Kåñëa Dvaipäyana Vedavyäsa has also offered his obeisances to Värñabhänavé Çré Rädhikä and Her beloved Çré Dämodara-Kåñëa, the orchestrators of unlimited pastimes, in the last verse of this Çré Dämodaräñöakam. In other words, he has established the supremacy of çakti- and çaktimäna-tattva (the tattva regarding the potency and the potent) on one basis.”
+
+--------------------------------------------------------------------------------
+SECTION 2: FIXED TEXT (After sanskrit_util_v2)
+--------------------------------------------------------------------------------
+xii  Śrī dämodaräñöakamone who worships Śrī Dämodara during Kärtika month by daily reciting the prayer Śrī Dämodaräñöakam, which was uttered by Śrī Satyavrata Muni as it arose in his heart, will perpetually attract Śrī Dämodara Himself.As stated above, Śrī Dämodara Hari becomes pleased with those who worship Śrī Rädhikä for Her pleasure during the month of Kärtika.2this Śrī Dämodaräñöakam stava is narrated in the Padma Puräëa, where it is spoken by Śrī Satyavrata Muni in the context of a conversation between Śrī Närada and other sages headed by Śrī Çaunaka Åñi. In his commentary on this Śrī Dämodaräñöakam, Śrīla Sanätana Gosvämipäda has stated, “This prayer is nitya-siddha, which means ‘eternally perfect’. It has manifested through Śrī Satyavrata Muni and is capable of attracting Śrī Dämodara-Kṛṣṇa.”2 Editor’s footnote by Śrī Śrīmad Bhaktivedänta Vämana Gosvämé Mahäräja, from the preface to the Bengali edition: “By performing worship of Śrī Rädhikä for Her pleasure during the month of Kärtika, Śrī Dämodara Hari becomes very pleased. This is because Ürjeçvaré Śrīmaté Rädhäräëé, the controller of all potency, is the sole presiding Goddess of this month. Unless someone worships His svarüpa-çakti (internal potency), or hlädiné-çakti (pleasure potency), Dämodara Śrī Kṛṣṇa, the possessor of all potencies, does not accept his worship. Moreover, Śrī Rädhä-devé, Śrī Kṛṣṇa’s antaraìga-çakti (internal potency), discards everything if She is worshipped alone without the Lord of Her life. Therefore, svarüpa rüpänuga gauḍéya-vaiñëavas (Gauḍéya Vaiñëavas in the line of Śrī Rüpa and Śrī Svarüpa Dämodara Gosvämés) have exclusively adopted the worship of Yugala (the Divine Couple) in rädhä-liìgita-vigraha – the form of Kṛṣṇa when He is tightly embraced by Śrīmaté Rädhikä. For the very same reason, Śrī Kṛṣṇa Dvaipäyana Vedavyäsa has also offered his obeisances to Värñabhänavé Śrī Rädhikä and Her beloved Śrī Dämodara-Kṛṣṇa, the orchestrators of unlimited pastimes, in the last verse of this Śrī Dämodaräñöakam. In other words, he has established the supremacy of çakti- and çaktimäna-tattva (the tattva regarding the potency and the potent) on one basis.”
+
+--------------------------------------------------------------------------------
+SECTION 3: CHARACTER-BY-CHARACTER DIFFERENCES
+--------------------------------------------------------------------------------
+
+Position    5: 'Ç' → 'Ś' [Font: ScaMahadev, Size: 12.0pt]
+Position    7: 'é' → 'ī' [Font: ScaMahadev, Size: 12.0pt]
+Position    9: 'D' → 'd' [Font: ScaMahadev, Size: 12.0pt]
+Position   23: 'O' → 'o' [Font: RamaGaramondPlus, Size: 9.5pt]
+Position   40: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 9.5pt]
+Position   42: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 9.5pt]
+Position  103: 'Ç' → 'Ś' [Font: RamaGaramondPlusItalic, Size: 9.5pt]
+Position  105: 'é' → 'ī' [Font: RamaGaramondPlusItalic, Size: 9.5pt]
+Position  144: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 9.5pt]
+Position  146: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 9.5pt]
+Position  215: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 9.5pt]
+Position  217: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 9.5pt]
+Position  253: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  255: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  310: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  312: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  368: 'T' → 't' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  373: 'Ç' → 'Ś' [Font: RamaGaramondPlusItalic, Size: 10.2pt]
+Position  375: 'é' → 'ī' [Font: RamaGaramondPlusItalic, Size: 10.2pt]
+Position  453: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  455: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  514: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  516: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  551: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  553: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  594: 'Ç' → 'Ś' [Font: RamaGaramondPlusItalic, Size: 10.2pt]
+Position  596: 'é' → 'ī' [Font: RamaGaramondPlusItalic, Size: 10.2pt]
+Position  614: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  616: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  742: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 9.5pt]
+Position  744: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 9.5pt]
+Position  791: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 9.5pt]
+Position  793: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 9.5pt]
+Position  805: 'å' → 'ṛ' [Font: RamaGaramondPlus, Size: 9.5pt]
+Position  806: 'ñ' → 'ṣ' [Font: RamaGaramondPlus, Size: 9.5pt]
+Position  807: 'ë' → 'ṇ' [Font: RamaGaramondPlus, Size: 9.5pt]
+Position  834: 'Ç' → 'Ś' [Font: ScaradheBold, Size: 8.0pt]
+Position  836: 'é' → 'ī' [Font: ScaradheBold, Size: 8.0pt]
+Position  838: 'Ç' → 'Ś' [Font: ScaradheBold, Size: 8.0pt]
+Position  840: 'é' → 'ī' [Font: ScaradheBold, Size: 8.0pt]
+Position  951: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position  953: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1009: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1011: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1075: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1077: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1278: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1280: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1283: 'å' → 'ṛ' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1284: 'ñ' → 'ṣ' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1285: 'ë' → 'ṇ' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1360: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1362: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1376: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1378: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1381: 'å' → 'ṛ' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1382: 'ñ' → 'ṣ' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1383: 'ë' → 'ṇ' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1532: 'ò' → 'ḍ' [Font: RamaGaramondPlusItalic, Size: 9.0pt]
+Position 1551: 'ò' → 'ḍ' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1581: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1583: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1594: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1596: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1732: 'å' → 'ṛ' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1733: 'ñ' → 'ṣ' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1734: 'ë' → 'ṇ' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1768: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1770: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1811: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1813: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1816: 'å' → 'ṛ' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1817: 'ñ' → 'ṣ' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1818: 'ë' → 'ṇ' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1890: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1892: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1918: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1920: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1932: 'å' → 'ṛ' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1933: 'ñ' → 'ṣ' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 1934: 'ë' → 'ṇ' [Font: RamaGaramondPlus, Size: 9.0pt]
+Position 2005: 'Ç' → 'Ś' [Font: RamaGaramondPlusItalic, Size: 9.0pt]
+Position 2007: 'é' → 'ī' [Font: RamaGaramondPlusItalic, Size: 9.0pt]
+
+--------------------------------------------------------------------------------
+SECTION 4: FONT ANALYSIS (Sanskrit Diacritical Characters)
+--------------------------------------------------------------------------------
+
+Font: RamaGaramondPlus
+  Diacriticals used: ñ
+
+Font: RamaGaramondPlusItalic
+  Diacriticals used: ñ
+
+Font: ScaMahadev
+  Diacriticals used: ñ
+
+--------------------------------------------------------------------------------
+SECTION 5: PROBLEMATIC CHARACTERS (Encoding Issues)
+--------------------------------------------------------------------------------
+
+Font: RamaGaramondPlus
+  Position   45: 'ä' (Unicode: U+00E4)
+  Position   61: 'ä' (Unicode: U+00E4)
+  Position  220: 'ä' (Unicode: U+00E4)
+  Position  258: 'ä' (Unicode: U+00E4)
+  Position  315: 'ä' (Unicode: U+00E4)
+  Position  320: 'ä' (Unicode: U+00E4)
+  Position  360: 'ä' (Unicode: U+00E4)
+  Position  519: 'ä' (Unicode: U+00E4)
+  Position  623: 'ä' (Unicode: U+00E4)
+  Position  633: 'ä' (Unicode: U+00E4)
+  Position  637: 'ä' (Unicode: U+00E4)
+  Position  796: 'ä' (Unicode: U+00E4)
+  Position  805: 'å' (Unicode: U+00E5)
+  Position  807: 'ë' (Unicode: U+00EB)
+  Position  956: 'ä' (Unicode: U+00E4)
+  Position  961: 'ä' (Unicode: U+00E4)
+  Position 1001: 'ä' (Unicode: U+00E4)
+  Position 1014: 'ä' (Unicode: U+00E4)
+  Position 1069: 'ç' (Unicode: U+00E7)
+  Position 1084: 'ä' (Unicode: U+00E4)
+  Position 1087: 'ä' (Unicode: U+00E4)
+  Position 1089: 'ä' (Unicode: U+00E4)
+  Position 1090: 'ë' (Unicode: U+00EB)
+  Position 1270: 'ä' (Unicode: U+00E4)
+  Position 1283: 'å' (Unicode: U+00E5)
+  Position 1285: 'ë' (Unicode: U+00EB)
+  Position 1365: 'ä' (Unicode: U+00E4)
+  Position 1368: 'ä' (Unicode: U+00E4)
+  Position 1381: 'å' (Unicode: U+00E5)
+  Position 1383: 'ë' (Unicode: U+00EB)
+  Position 1551: 'ò' (Unicode: U+00F2)
+  Position 1560: 'ë' (Unicode: U+00EB)
+  Position 1607: 'ä' (Unicode: U+00E4)
+  Position 1619: 'ä' (Unicode: U+00E4)
+  Position 1732: 'å' (Unicode: U+00E5)
+  Position 1734: 'ë' (Unicode: U+00EB)
+  Position 1777: 'ä' (Unicode: U+00E4)
+  Position 1782: 'ä' (Unicode: U+00E4)
+  Position 1816: 'å' (Unicode: U+00E5)
+  Position 1818: 'ë' (Unicode: U+00EB)
+  Position 1826: 'ä' (Unicode: U+00E4)
+  Position 1838: 'ä' (Unicode: U+00E4)
+  Position 1878: 'ä' (Unicode: U+00E4)
+  Position 1884: 'ä' (Unicode: U+00E4)
+  Position 1895: 'ä' (Unicode: U+00E4)
+  Position 1900: 'ä' (Unicode: U+00E4)
+  Position 1923: 'ä' (Unicode: U+00E4)
+  Position 1932: 'å' (Unicode: U+00E5)
+  Position 1934: 'ë' (Unicode: U+00EB)
+
+Font: RamaGaramondPlusItalic
+  Position  108: 'ä' (Unicode: U+00E4)
+  Position  114: 'ä' (Unicode: U+00E4)
+  Position  378: 'ä' (Unicode: U+00E4)
+  Position  384: 'ä' (Unicode: U+00E4)
+  Position  426: 'ä' (Unicode: U+00E4)
+  Position  427: 'ë' (Unicode: U+00EB)
+  Position  599: 'ä' (Unicode: U+00E4)
+  Position  605: 'ä' (Unicode: U+00E4)
+  Position 1206: 'ç' (Unicode: U+00E7)
+  Position 1237: 'ä' (Unicode: U+00E4)
+  Position 1243: 'ç' (Unicode: U+00E7)
+  Position 1398: 'ç' (Unicode: U+00E7)
+  Position 1523: 'ä' (Unicode: U+00E4)
+  Position 1532: 'ò' (Unicode: U+00F2)
+  Position 1541: 'ë' (Unicode: U+00EB)
+  Position 1696: 'ä' (Unicode: U+00E4)
+  Position 1699: 'ä' (Unicode: U+00E4)
+  Position 2010: 'ä' (Unicode: U+00E4)
+  Position 2016: 'ä' (Unicode: U+00E4)
+  Position 2077: 'ç' (Unicode: U+00E7)
+  Position 2088: 'ç' (Unicode: U+00E7)
+  Position 2094: 'ä' (Unicode: U+00E4)
+
+Font: ScaMahadev
+  Position   10: 'ä' (Unicode: U+00E4)
+  Position   16: 'ä' (Unicode: U+00E4)
+
+Font: ScaradheBold
+  Position  854: 'ä' (Unicode: U+00E4)
+  Position  860: 'ä' (Unicode: U+00E4)
+  Position  870: 'ä' (Unicode: U+00E4)
+  Position  877: 'ä' (Unicode: U+00E4)
+  Position  879: 'ä' (Unicode: U+00E4)
+
+--------------------------------------------------------------------------------
+SECTION 6: FONT-SPECIFIC ERROR PATTERNS
+--------------------------------------------------------------------------------
+
+This section shows which fonts consistently produce which errors.
+Use this data to populate BOOK_PROFILE_MAP in sanskrit_util_v2.py
+
+Font: RamaGaramondPlus
+  O → o
+  T → t
+  Ç → Ś
+  Ç → ś
+  å → ṛ
+  é → ī
+  ë → ṇ
+  ñ → ṣ
+  ò → ḍ
+
+Font: RamaGaramondPlusItalic
+  Ç → Ś
+  Ç → ś
+  ç → ś
+  é → ī
+  ò → ḍ
+
+Font: ScaMahadev
+  A → a
+  D → d
+  Ç → Ś
+  é → ī
+
+Font: ScaradheBold
+  Ç → Ś
+  é → ī
+
+--------------------------------------------------------------------------------
+SECTION 7: ALL FONTS USED IN PAGE
+--------------------------------------------------------------------------------
+
+RamaGaramondPlus: 1814 characters
+RamaGaramondPlusItalic: 225 characters
+ScaradheBold: 112 characters
+ScaMahadev: 18 characters
+
+================================================================================
+END OF REPORT
+================================================================================

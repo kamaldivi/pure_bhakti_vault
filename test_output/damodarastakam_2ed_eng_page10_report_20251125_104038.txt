@@ -1,0 +1,142 @@
+================================================================================
+SANSKRIT UTILS V2 TEST REPORT
+================================================================================
+
+PDF File: damodarastakam_2ed_eng.pdf
+Page Number: 10
+Test Date: 2025-11-25 10:40:38
+Total Characters: 1196
+Changes Made: 30
+
+--------------------------------------------------------------------------------
+SECTION 1: ORIGINAL TEXT (Extracted from PDF)
+--------------------------------------------------------------------------------
+x  Çré DämodaräñöakamOnce, during the month of Kärtika, Çréla Gurudeva read çré dämabhandana-lélä from Çréla Jéva Gosvämépäda’s Gopäla-campüù to his spiritual master, Çré Çrémad Bhakti Prajïäna Keçava Gosvämé Mahäräja. Upon hearing the pastime narrated by Çréla Gurudeva, Çré Çrémad Bhakti Prajïäna Keçava Gosvämé Mahäräja exhibited rare ecstatic symptoms. With Çréla Gurudeva’s permission, we have included that same excerpt from Gopäla-campüù, translated into English for the first time, as an appendix to the present edition of Çré Dämodaräñöakam, along with Çréla Gurudeva’s brief recount of the afore-mentioned history.In the Bengali edition by Çré Çrémad Bhakti Prajïäna Keçava Gosvämé Mahäräja, there are many footnotes and parenthetical statements clarifying the Dig-darçiné-öékä. In this English edition therefore, all of these clarifications are marked by square brackets with the exception of two päda-öékäs (footnotes) in Verse Four, one in Verse Six and one in Verse Eight. We have marked all of our own footnoes in this English edition as “Editor’s footnotes”. Where direct English translations of Sanskrit terms have been provided, standard parentheses have been used.- The editors
+
+--------------------------------------------------------------------------------
+SECTION 2: FIXED TEXT (After sanskrit_util_v2)
+--------------------------------------------------------------------------------
+x  Śrī dämodaräñöakamonce, during the month of Kärtika, Śrīla Gurudeva read śrī dämabhandana-lélä from Śrīla Jéva Gosvämépäda’s Gopäla-campüù to his spiritual master, Śrī Śrīmad Bhakti Prajïäna Keçava Gosvämé Mahäräja. Upon hearing the pastime narrated by Śrīla Gurudeva, Śrī Śrīmad Bhakti Prajïäna Keçava Gosvämé Mahäräja exhibited rare ecstatic symptoms. With Śrīla Gurudeva’s permission, we have included that same excerpt from Gopäla-campüù, translated into English for the first time, as an appendix to the present edition of Śrī Dämodaräñöakam, along with Śrīla Gurudeva’s brief recount of the afore-mentioned history.In the Bengali edition by Śrī Śrīmad Bhakti Prajïäna Keçava Gosvämé Mahäräja, there are many footnotes and parenthetical statements clarifying the Dig-darçiné-öékä. In this English edition therefore, all of these clarifications are marked by square brackets with the exception of two päda-öékäs (footnotes) in Verse Four, one in Verse Six and one in Verse Eight. We have marked all of our own footnoes in this English edition as “Editor’s footnotes”. Where direct English translations of Sanskrit terms have been provided, standard parentheses have been used.- The editors
+
+--------------------------------------------------------------------------------
+SECTION 3: CHARACTER-BY-CHARACTER DIFFERENCES
+--------------------------------------------------------------------------------
+
+Position    3: 'Ç' → 'Ś' [Font: ScaMahadev, Size: 12.0pt]
+Position    5: 'é' → 'ī' [Font: ScaMahadev, Size: 12.0pt]
+Position    7: 'D' → 'd' [Font: ScaMahadev, Size: 12.0pt]
+Position   21: 'O' → 'o' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position   56: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position   58: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position   76: 'ç' → 'ś' [Font: RamaGaramondPlusItalic, Size: 10.2pt]
+Position   78: 'é' → 'ī' [Font: RamaGaramondPlusItalic, Size: 10.2pt]
+Position  103: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  105: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  167: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  169: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  171: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  173: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  256: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  258: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  272: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  274: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  276: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  278: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  362: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  364: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  531: 'Ç' → 'Ś' [Font: RamaGaramondPlusItalic, Size: 10.2pt]
+Position  533: 'é' → 'ī' [Font: RamaGaramondPlusItalic, Size: 10.2pt]
+Position  562: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  564: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  650: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  652: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  654: 'Ç' → 'Ś' [Font: RamaGaramondPlus, Size: 10.2pt]
+Position  656: 'é' → 'ī' [Font: RamaGaramondPlus, Size: 10.2pt]
+
+--------------------------------------------------------------------------------
+SECTION 4: FONT ANALYSIS (Sanskrit Diacritical Characters)
+--------------------------------------------------------------------------------
+
+Font: RamaGaramondPlusItalic
+  Diacriticals used: ñ
+
+Font: ScaMahadev
+  Diacriticals used: ñ
+
+--------------------------------------------------------------------------------
+SECTION 5: PROBLEMATIC CHARACTERS (Encoding Issues)
+--------------------------------------------------------------------------------
+
+Font: RamaGaramondPlus
+  Position   48: 'ä' (Unicode: U+00E4)
+  Position  118: 'ä' (Unicode: U+00E4)
+  Position  122: 'ä' (Unicode: U+00E4)
+  Position  189: 'ï' (Unicode: U+00EF)
+  Position  190: 'ä' (Unicode: U+00E4)
+  Position  196: 'ç' (Unicode: U+00E7)
+  Position  205: 'ä' (Unicode: U+00E4)
+  Position  212: 'ä' (Unicode: U+00E4)
+  Position  214: 'ä' (Unicode: U+00E4)
+  Position  294: 'ï' (Unicode: U+00EF)
+  Position  295: 'ä' (Unicode: U+00E4)
+  Position  301: 'ç' (Unicode: U+00E7)
+  Position  310: 'ä' (Unicode: U+00E4)
+  Position  317: 'ä' (Unicode: U+00E4)
+  Position  319: 'ä' (Unicode: U+00E4)
+  Position  672: 'ï' (Unicode: U+00EF)
+  Position  673: 'ä' (Unicode: U+00E4)
+  Position  679: 'ç' (Unicode: U+00E7)
+  Position  688: 'ä' (Unicode: U+00E4)
+  Position  695: 'ä' (Unicode: U+00E4)
+  Position  697: 'ä' (Unicode: U+00E4)
+
+Font: RamaGaramondPlusItalic
+  Position   76: 'ç' (Unicode: U+00E7)
+  Position   81: 'ä' (Unicode: U+00E4)
+  Position   96: 'ä' (Unicode: U+00E4)
+  Position  131: 'ä' (Unicode: U+00E4)
+  Position  434: 'ä' (Unicode: U+00E4)
+  Position  536: 'ä' (Unicode: U+00E4)
+  Position  542: 'ä' (Unicode: U+00E4)
+  Position  778: 'ç' (Unicode: U+00E7)
+  Position  786: 'ä' (Unicode: U+00E4)
+  Position  909: 'ä' (Unicode: U+00E4)
+  Position  916: 'ä' (Unicode: U+00E4)
+
+Font: ScaMahadev
+  Position    8: 'ä' (Unicode: U+00E4)
+  Position   14: 'ä' (Unicode: U+00E4)
+
+--------------------------------------------------------------------------------
+SECTION 6: FONT-SPECIFIC ERROR PATTERNS
+--------------------------------------------------------------------------------
+
+This section shows which fonts consistently produce which errors.
+Use this data to populate BOOK_PROFILE_MAP in sanskrit_util_v2.py
+
+Font: RamaGaramondPlus
+  O → o
+  Ç → Ś
+  é → ī
+
+Font: RamaGaramondPlusItalic
+  Ç → Ś
+  ç → ś
+  é → ī
+
+Font: ScaMahadev
+  D → d
+  Ç → Ś
+  é → ī
+
+--------------------------------------------------------------------------------
+SECTION 7: ALL FONTS USED IN PAGE
+--------------------------------------------------------------------------------
+
+RamaGaramondPlus: 1086 characters
+RamaGaramondPlusItalic: 92 characters
+ScaMahadev: 18 characters
+
+================================================================================
+END OF REPORT
+================================================================================

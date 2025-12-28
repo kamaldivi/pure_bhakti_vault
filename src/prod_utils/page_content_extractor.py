@@ -94,44 +94,192 @@ class PageContentExtractor:
             raise ContentExtractionError(f"PDF file not found: {pdf_path}")
         
         return pdf_path
-    
+
+    def _detect_coordinate_transformation(self, page: fitz.Page) -> tuple:
+        """
+        Detect coordinate system transformations (rotation, Y-axis flip) and return correction factors.
+
+        Args:
+            page: PyMuPDF page object
+
+        Returns:
+            tuple: (y_axis_flipped, rotation_degrees, corrected_header_offset, corrected_footer_offset)
+        """
+        try:
+            page_rect = page.rect
+            rotation = page.rotation
+
+            # Get transformation matrix
+            try:
+                matrix = page.transformation_matrix
+            except:
+                # Fallback if transformation matrix is not available
+                matrix = fitz.Matrix(1, 0, 0, 1, 0, 0)
+
+            # Detect Y-axis flip (common in all PDFs)
+            y_axis_flipped = matrix[3] == -1.0
+
+            # Log transformation details
+            self.logger.info(f"Page transformation - Rotation: {rotation}°, Matrix: {matrix}, Y-flipped: {y_axis_flipped}")
+
+            return y_axis_flipped, rotation, matrix
+
+        except Exception as e:
+            self.logger.warning(f"Could not detect coordinate transformation: {e}")
+            return False, 0, fitz.Matrix(1, 0, 0, 1, 0, 0)
+
+    def _apply_coordinate_correction(self, page: fitz.Page, header_height: float, footer_height: float) -> tuple:
+        """
+        Apply coordinate corrections based on page transformation.
+
+        Args:
+            page: PyMuPDF page object
+            header_height: Original header height from database
+            footer_height: Original footer height from database
+
+        Returns:
+            tuple: (corrected_header_height, corrected_footer_height)
+        """
+        try:
+            page_rect = page.rect
+            y_axis_flipped, rotation, matrix = self._detect_coordinate_transformation(page)
+
+            # Apply corrections based on transformations
+            if y_axis_flipped:
+                # Y-axis is flipped but header is still header and footer is still footer
+                # The coordinate system is inverted, but we don't swap semantic meanings
+                # We just need to ensure proper coordinate calculations in the extraction methods
+                corrected_header = header_height
+                corrected_footer = footer_height
+
+                self.logger.info(f"Y-axis flip detected: using original header={header_height}, footer={footer_height}")
+                self.logger.info(f"Page height: {page_rect.height}")
+
+                # Additional correction for rotated pages
+                if rotation == 90 or rotation == 270:
+                    # For 90/270 degree rotation, coordinates may need additional adjustment
+                    self.logger.info(f"Additional rotation correction for {rotation}° rotation")
+                    # Note: Coordinate transformations are handled in the extraction methods
+
+                return corrected_header, corrected_footer
+            else:
+                # No transformation needed
+                self.logger.info("No coordinate correction needed - standard coordinate system")
+                return header_height, footer_height
+
+        except Exception as e:
+            self.logger.error(f"Error applying coordinate correction: {e}")
+            return header_height, footer_height
+
     def _extract_content_region(self, page: fitz.Page, header_height: float, footer_height: float) -> str:
         """
         Extract text content from the main content area, excluding header and footer.
-        
+
         Args:
             page: PyMuPDF page object
             header_height: Height of header region in PDF points (from top)
             footer_height: Height of footer region in PDF points (from bottom)
-            
+
         Returns:
             str: Extracted text content from the main area
         """
         try:
             page_rect = page.rect
-            
-            # Calculate main content area coordinates
-            # Note: PDF coordinate system has (0,0) at bottom-left, but PyMuPDF uses top-left
-            content_x0 = page_rect.x0
-            content_y0 = page_rect.y0 + header_height  # Start below header
-            content_x1 = page_rect.x1
-            content_y1 = footer_height  # End at footer start coordinate
-            
-            # Ensure we have a valid content area
-            if content_y0 >= content_y1:
-                self.logger.warning(f"Invalid content area: header_height={header_height}, footer_height={footer_height}, page_height={page_rect.height}")
-                return ""
-            
-            # Create rectangle for main content area
-            content_rect = fitz.Rect(content_x0, content_y0, content_x1, content_y1)
-            
-            # Extract text from the content area
-            content_text = page.get_text("text", clip=content_rect).strip()
-            
-            return content_text
-            
+
+            # Check if page has rotation/transformation issues
+            y_axis_flipped, rotation, matrix = self._detect_coordinate_transformation(page)
+
+            if rotation == 270 or rotation == 90 or y_axis_flipped:
+                # For rotated/transformed pages, use block-based extraction
+                self.logger.info(f"Using block-based extraction for rotated/transformed page (rotation: {rotation}°, y-flipped: {y_axis_flipped})")
+                return self._extract_content_using_blocks(page, header_height, footer_height)
+            else:
+                # For normal pages, use coordinate-based extraction
+                return self._extract_content_using_coordinates(page, header_height, footer_height)
+
         except Exception as e:
             self.logger.error(f"Error extracting content region: {e}")
+            return ""
+
+    def _extract_content_using_coordinates(self, page: fitz.Page, header_height: float, footer_height: float) -> str:
+        """Extract content using coordinate-based clipping (for normal PDFs)."""
+        try:
+            page_rect = page.rect
+
+            # Apply coordinate transformation corrections
+            corrected_header, corrected_footer = self._apply_coordinate_correction(page, header_height, footer_height)
+
+            # Calculate main content area coordinates with corrections
+            content_x0 = page_rect.x0
+            content_y0 = page_rect.y0 + corrected_header  # Start below corrected header
+            content_x1 = page_rect.x1
+            content_y1 = corrected_footer  # End at corrected footer start coordinate
+
+            # Ensure we have a valid content area
+            if content_y0 >= content_y1:
+                self.logger.warning(f"Invalid content area: original header={header_height}, footer={footer_height}, corrected header={corrected_header}, footer={corrected_footer}, page_height={page_rect.height}")
+                return ""
+
+            # Create rectangle for main content area
+            content_rect = fitz.Rect(content_x0, content_y0, content_x1, content_y1)
+
+            # Extract text from the content area
+            content_text = page.get_text("text", clip=content_rect).strip()
+
+            return content_text
+
+        except Exception as e:
+            self.logger.error(f"Error extracting content using coordinates: {e}")
+            return ""
+
+    def _extract_content_using_blocks(self, page: fitz.Page, header_height: float, footer_height: float) -> str:
+        """Extract content using text blocks (for rotated/transformed PDFs)."""
+        try:
+            page_rect = page.rect
+
+            # Get text blocks with coordinates
+            text_dict = page.get_text("dict")
+
+            # Apply coordinate corrections
+            corrected_header, corrected_footer = self._apply_coordinate_correction(page, header_height, footer_height)
+
+            self.logger.info(f"Block extraction: header boundary {corrected_header}, footer boundary {corrected_footer}")
+
+            content_blocks = []
+            for block in text_dict.get("blocks", []):
+                if "lines" not in block:
+                    continue
+
+                bbox = block["bbox"]
+                # Check if block is in content area (between header and footer)
+                block_top = bbox[1]
+                block_bottom = bbox[3]
+
+                # Block should start after header and end before footer
+                if block_top >= corrected_header and block_bottom <= corrected_footer:
+                    # Extract text from this block
+                    block_text = ""
+                    for line in block["lines"]:
+                        line_text = ""
+                        for span in line["spans"]:
+                            line_text += span["text"]
+                        if line_text.strip():
+                            block_text += line_text + "\n"
+
+                    if block_text.strip():
+                        content_blocks.append((block_top, block_text.strip()))
+
+            # Sort blocks by Y coordinate and combine
+            content_blocks.sort(key=lambda x: x[0])
+
+            combined_text = "\n".join([block[1] for block in content_blocks])
+
+            self.logger.info(f"Block extraction found {len(content_blocks)} content blocks")
+
+            return combined_text.strip()
+
+        except Exception as e:
+            self.logger.error(f"Error extracting content using blocks: {e}")
             return ""
 
     def _extract_header_region(self, page: fitz.Page, header_height: float) -> str:
@@ -148,14 +296,17 @@ class PageContentExtractor:
         try:
             if header_height <= 0:
                 return ""
-                
+
             page_rect = page.rect
-            
-            # Calculate header area coordinates
+
+            # Apply coordinate transformation corrections
+            corrected_header, _ = self._apply_coordinate_correction(page, header_height, page_rect.height)
+
+            # Calculate header area coordinates with corrections
             header_x0 = page_rect.x0
             header_y0 = page_rect.y0  # Start from top
             header_x1 = page_rect.x1
-            header_y1 = page_rect.y0 + header_height  # End at header height
+            header_y1 = page_rect.y0 + corrected_header  # End at corrected header height
             
             # Create rectangle for header area
             header_rect = fitz.Rect(header_x0, header_y0, header_x1, header_y1)
@@ -182,13 +333,16 @@ class PageContentExtractor:
         """
         try:
             page_rect = page.rect
-            
+
             if footer_height <= 0 or footer_height >= page_rect.height:
                 return ""
-                
-            # Calculate footer area coordinates
+
+            # Apply coordinate transformation corrections
+            _, corrected_footer = self._apply_coordinate_correction(page, 0, footer_height)
+
+            # Calculate footer area coordinates with corrections
             footer_x0 = page_rect.x0
-            footer_y0 = footer_height  # Start at footer Y coordinate
+            footer_y0 = corrected_footer  # Start at corrected footer Y coordinate
             footer_x1 = page_rect.x1
             footer_y1 = page_rect.y1  # End at bottom of page
             

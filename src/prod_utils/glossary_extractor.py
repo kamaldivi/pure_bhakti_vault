@@ -19,12 +19,12 @@ FEATURES:
 - Single combined CSV output
 
 USAGE:
-    python glossary_extractor.py
-    
+    python glossary_extractor.py [--verbose]
+
 OUTPUT:
-    - Direct database insertion into PostgreSQL glossary table
-    - Structured format: book_id, term, description, created_at, updated_at
-    - Handles duplicate entries with update/insert logic
+    - Appends to Google Sheets 'glossary' tab
+    - Structured format: book_id, pdf_name, term, description
+    - All entries appended for manual review (no duplicate checking)
     - Enhanced parsing separates terms from descriptions
 
 FEATURES OF ENHANCED PARSING:
@@ -41,8 +41,10 @@ import sys
 import argparse
 import unicodedata
 from pathlib import Path
-from typing import List, Optional, Dict, Any
+from typing import List, Optional, Dict, Any, Set, Tuple
 from dotenv import load_dotenv
+import gspread
+from google.oauth2.service_account import Credentials
 
 # Load environment variables
 load_dotenv()
@@ -1169,233 +1171,288 @@ def print_separator_analysis_report(patterns_report: Dict[str, Any]) -> None:
             print(f"  • {case.replace('_', ' ').title()}: {count} occurrences")
 
 
-def write_glossary_to_database(all_results: Dict[str, Any], db: PureBhaktiVaultDB, clear_existing: bool = False) -> int:
-    """Write all parsed glossary entries to the database."""
-    
-    total_items = 0
-    total_inserted = 0
-    total_updated = 0
-    total_errors = 0
-    
+class GoogleSheetsWriter:
+    """Write glossary entries to Google Sheets with duplicate checking."""
+
+    SCOPES = [
+        'https://www.googleapis.com/auth/spreadsheets',
+        'https://www.googleapis.com/auth/drive.file'
+    ]
+
+    def __init__(self, credentials_file: str, sheet_id: str, tab_name: str = 'glossary'):
+        """
+        Initialize Google Sheets writer.
+
+        Args:
+            credentials_file: Path to service account JSON credentials
+            sheet_id: Google Sheets ID
+            tab_name: Name of the tab to write to
+        """
+        self.credentials_file = credentials_file
+        self.sheet_id = sheet_id
+        self.tab_name = tab_name
+        self.client = None
+        self.worksheet = None
+
+    def authenticate(self) -> bool:
+        """Authenticate with Google Sheets API."""
+        try:
+            print(f"🔐 Authenticating with Google Sheets API...")
+
+            creds = Credentials.from_service_account_file(
+                self.credentials_file,
+                scopes=self.SCOPES
+            )
+
+            self.client = gspread.authorize(creds)
+            print(f"✅ Authentication successful!")
+            return True
+
+        except Exception as e:
+            print(f"❌ Authentication failed: {e}")
+            return False
+
+    def open_worksheet(self) -> bool:
+        """Open the target worksheet."""
+        try:
+            print(f"📊 Opening Google Sheet (ID: {self.sheet_id})...")
+            spreadsheet = self.client.open_by_key(self.sheet_id)
+
+            # Try to get the glossary tab
+            try:
+                self.worksheet = spreadsheet.worksheet(self.tab_name)
+                print(f"✅ Found '{self.tab_name}' tab")
+            except gspread.exceptions.WorksheetNotFound:
+                print(f"⚠️  Tab '{self.tab_name}' not found, creating it...")
+                self.worksheet = spreadsheet.add_worksheet(
+                    title=self.tab_name,
+                    rows=1000,
+                    cols=4
+                )
+                # Add headers to match existing format
+                self.worksheet.update('A1:D1', [['book_id', 'pdf_name', 'term', 'description']])
+                print(f"✅ Created '{self.tab_name}' tab with headers")
+
+            return True
+
+        except Exception as e:
+            print(f"❌ Failed to open worksheet: {e}")
+            return False
+
+    def append_entries(self, entries: List[Dict[str, Any]], pdf_name: str) -> int:
+        """
+        Append all entries to the sheet (no duplicate checking).
+
+        Args:
+            entries: List of glossary entries to append
+            pdf_name: PDF filename for this book
+
+        Returns:
+            Number of entries appended
+        """
+        try:
+            new_rows = []
+
+            for entry in entries:
+                book_id = entry['book_id']
+                term = entry['term']
+                description = entry['description']
+
+                # Format: book_id, pdf_name, term, description
+                new_rows.append([book_id, pdf_name, term, description])
+
+            if new_rows:
+                print(f"   📝 Appending {len(new_rows)} entries...")
+                self.worksheet.append_rows(new_rows, value_input_option='USER_ENTERED')
+
+            return len(new_rows)
+
+        except Exception as e:
+            print(f"❌ Failed to append entries: {e}")
+            raise
+
+
+def write_glossary_to_google_sheets(all_results: Dict[str, Any], sheet_writer: GoogleSheetsWriter) -> Dict[str, int]:
+    """Write all parsed glossary entries to Google Sheets (no duplicate checking)."""
+
+    stats = {
+        'total_processed': 0,
+        'total_added': 0,
+        'errors': 0
+    }
+
+    # Authenticate and open worksheet
+    if not sheet_writer.authenticate():
+        return stats
+
+    if not sheet_writer.open_worksheet():
+        return stats
+
     # Write all parsed entries from all books
     for result in all_results.values():
         book_info = result['book_info']
         book_id = book_info['book_id']
+        pdf_name = book_info['pdf_name']
         parsed_entries = result['parsed_entries']
-        
-        print(f"  💾 Writing {len(parsed_entries)} entries for book {book_id} ({book_info['original_title']})")
-        
-        # Clear existing entries if requested
-        if clear_existing:
-            clear_glossary_for_book(db, book_id)
-        
-        for entry in parsed_entries:
-            try:
-                # Try to insert/update the glossary entry
-                inserted, updated = insert_or_update_glossary_entry(
-                    db, 
-                    book_id=entry['book_id'],
-                    term=entry['term'],
-                    description=entry['description']
-                )
-                
-                if inserted:
-                    total_inserted += 1
-                elif updated:
-                    total_updated += 1
-                
-                total_items += 1
-                
-            except Exception as e:
-                print(f"    ❌ Error processing entry '{entry['term']}': {e}")
-                total_errors += 1
-                continue
-        
-        print(f"    ✅ Processed {len(parsed_entries)} entries for book {book_id}")
-    
-    print(f"  📊 Database write summary:")
-    print(f"    • Total entries processed: {total_items}")
-    print(f"    • New entries inserted: {total_inserted}")
-    print(f"    • Existing entries updated: {total_updated}")
-    print(f"    • Errors encountered: {total_errors}")
-    
-    return total_items
 
+        print(f"  📤 Processing {len(parsed_entries)} entries for book {book_id} ({book_info['original_title']})")
 
-def insert_or_update_glossary_entry(db: PureBhaktiVaultDB, book_id: int, term: str, description: str) -> tuple:
-    """
-    Insert or update a glossary entry in the database.
-    
-    Returns:
-        tuple: (inserted: bool, updated: bool) indicating what operation was performed
-    """
-    
-    # Check if the entry already exists
-    check_query = """
-        SELECT glossary_id FROM glossary 
-        WHERE book_id = %s AND term = %s
-    """
-    
-    try:
-        with db.get_cursor() as cursor:
-            cursor.execute(check_query, (book_id, term))
-            existing = cursor.fetchone()
-            
-            if existing:
-                # Update existing entry
-                update_query = """
-                    UPDATE glossary 
-                    SET description = %s, updated_at = CURRENT_TIMESTAMP
-                    WHERE book_id = %s AND term = %s
-                """
-                cursor.execute(update_query, (description, book_id, term))
-                return (False, True)  # Not inserted, but updated
-            else:
-                # Insert new entry
-                insert_query = """
-                    INSERT INTO glossary (book_id, term, description, created_at, updated_at)
-                    VALUES (%s, %s, %s, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
-                """
-                cursor.execute(insert_query, (book_id, term, description))
-                return (True, False)  # Inserted, not updated
-                
-    except Exception as e:
-        print(f"    ⚠️  Database error for term '{term}': {e}")
-        raise
+        try:
+            added = sheet_writer.append_entries(parsed_entries, pdf_name)
 
+            stats['total_processed'] += len(parsed_entries)
+            stats['total_added'] += added
 
-def clear_glossary_for_book(db: PureBhaktiVaultDB, book_id: int) -> int:
-    """
-    Clear all existing glossary entries for a book before inserting new ones.
-    
-    Returns:
-        int: Number of entries deleted
-    """
-    delete_query = "DELETE FROM glossary WHERE book_id = %s"
-    
-    try:
-        with db.get_cursor() as cursor:
-            cursor.execute(delete_query, (book_id,))
-            deleted_count = cursor.rowcount
-            print(f"  🗑️  Cleared {deleted_count} existing glossary entries for book {book_id}")
-            return deleted_count
-            
-    except Exception as e:
-        print(f"  ❌ Error clearing glossary entries for book {book_id}: {e}")
-        raise
+            print(f"     ✅ Appended: {added} entries")
+
+        except Exception as e:
+            print(f"     ❌ Error processing book {book_id}: {e}")
+            stats['errors'] += 1
+            continue
+
+    print(f"\n  📊 Google Sheets write summary:")
+    print(f"     • Total entries processed: {stats['total_processed']}")
+    print(f"     • Total entries appended: {stats['total_added']}")
+    print(f"     • Books with errors: {stats['errors']}")
+
+    return stats
 
 def parse_arguments():
     """Parse command line arguments."""
     parser = argparse.ArgumentParser(
-        description="Enhanced Glossary Extractor - Extract glossary terms from PDFs and write to database",
+        description="Enhanced Glossary Extractor - Extract glossary terms from PDFs and write to Google Sheets",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  python glossary_extractor.py                    # Extract and update/insert glossary entries
-  python glossary_extractor.py --clear            # Clear existing entries before inserting new ones
+  python glossary_extractor.py                    # Extract and append glossary entries to Google Sheets
+  python glossary_extractor.py --verbose          # Extract with detailed analysis reports
   python glossary_extractor.py --help             # Show this help message
 
 The script will:
-1. Connect to PostgreSQL database using environment variables
-2. Find books with glossary page ranges defined in the database
-3. Extract glossary content from those page ranges using PageContentExtractor
-4. Parse the content into structured term/description pairs
-5. Insert or update entries in the glossary table
+1. Connect to PostgreSQL database to find books with glossary page ranges
+2. Extract glossary content from those page ranges using PageContentExtractor
+3. Parse the content into structured term/description pairs
+4. Append ALL entries to the 'glossary' tab (no duplicate checking)
+5. User manually reviews and cleans up data in Google Sheets
         """
     )
-    
-    parser.add_argument(
-        "--clear", 
-        action="store_true", 
-        help="Clear existing glossary entries for each book before inserting new ones (default: update existing entries)"
-    )
-    
+
     parser.add_argument(
         "--verbose", "-v",
         action="store_true",
         help="Enable verbose output with detailed analysis reports"
     )
-    
+
     return parser.parse_args()
 
 
 def main():
-    """Main function using the new database-integrated approach."""
+    """Main function - extract glossary and write to Google Sheets."""
     # Parse command line arguments
     args = parse_arguments()
-    
+
     print("🚀 Starting Enhanced Glossary Extraction")
     print("=" * 60)
-    
-    if args.clear:
-        print("🗑️  Mode: Clear existing entries and insert new ones")
-    else:
-        print("🔄 Mode: Update existing entries, insert new ones")
-    
+    print("📤 Output: Google Sheets (all entries appended for manual review)")
+
     if args.verbose:
         print("📊 Verbose mode: Detailed analysis reports enabled")
-    
+
     try:
+        # Get Google Sheets configuration from environment
+        credentials_file = os.getenv('GOOGLE_SERVICE_ACCOUNT_FILE')
+        sheet_id = os.getenv('GOOGLE_BOOK_LOADER_SHEET_ID')
+
+        if not credentials_file:
+            print("❌ ERROR: GOOGLE_SERVICE_ACCOUNT_FILE not set in .env file")
+            return
+
+        if not sheet_id:
+            print("❌ ERROR: GOOGLE_BOOK_LOADER_SHEET_ID not set in .env file")
+            return
+
+        if not Path(credentials_file).exists():
+            print(f"❌ ERROR: Credentials file not found at: {credentials_file}")
+            return
+
+        print(f"✅ Google Sheets configuration loaded")
+        print(f"   Sheet ID: {sheet_id}")
+        print(f"   Tab: 'glossary'")
+
         # Initialize the enhanced glossary extractor
         extractor = GlossaryExtractor()
-        
-        # Test database connection
+
+        # Test database connection (for reading book metadata)
         if not extractor.db.test_connection():
             print("❌ Failed to connect to database. Check your connection parameters.")
             return
-        
-        print("✅ Database connection successful")
-        
+
+        print("✅ Database connection successful (for reading book metadata)")
+
         # Process all books with glossary ranges
         print("\n📖 Processing books with glossary page ranges...")
         results = extractor.process_all_glossary_books()
-        
+
         if not results:
             print("\n⚠️  No books with glossary ranges found or processed")
             return
-        
+
         # Analyze patterns if verbose mode is enabled
         if args.verbose:
             # Analyze separator patterns for each book
             print(f"\n🔍 Analyzing separator patterns for each book...")
             separator_analysis = analyze_separator_patterns(results)
             print_separator_analysis_report(separator_analysis)
-            
+
             # Analyze description endings for parsing insights
             print(f"\n🔍 Analyzing description patterns...")
             analysis_stats = analyze_description_endings(results)
             print_description_analysis_report(analysis_stats)
         else:
             print(f"\n💡 Tip: Use --verbose flag to see detailed pattern analysis reports")
-        
-        # Export results to database
-        print(f"\n💾 Writing all results to database...")
-        
+
+        # Export results to Google Sheets
+        print(f"\n📤 Writing all results to Google Sheets...")
+
         try:
-            total_exported = write_glossary_to_database(results, extractor.db, clear_existing=args.clear)
-            print(f"  ✅ Successfully wrote glossary entries to database")
+            sheet_writer = GoogleSheetsWriter(
+                credentials_file=credentials_file,
+                sheet_id=sheet_id,
+                tab_name='glossary'
+            )
+
+            stats = write_glossary_to_google_sheets(results, sheet_writer)
+
+            if stats['total_added'] > 0 or stats['total_skipped'] > 0:
+                print(f"  ✅ Successfully processed glossary entries")
+            else:
+                print(f"  ⚠️  No new entries to add")
+
         except Exception as e:
-            print(f"  ❌ Failed to write to database: {e}")
+            print(f"  ❌ Failed to write to Google Sheets: {e}")
             import traceback
             traceback.print_exc()
             return
-        
+
         # Summary
         print(f"\n🎉 Processing Complete!")
         print("=" * 60)
         print(f"📊 Summary:")
         print(f"  • Books processed: {len(results)}")
-        print(f"  • Total structured glossary entries: {total_exported}")
-        print(f"  • Database: PostgreSQL glossary table updated")
-        print(f"  • Table structure: book_id, term, description, created_at, updated_at")
-        
+        print(f"  • Total entries extracted: {stats['total_processed']}")
+        print(f"  • Total entries appended to Google Sheets: {stats['total_added']}")
+        print(f"  • Output: Google Sheets 'glossary' tab")
+        print(f"  • Columns: book_id, pdf_name, term, description")
+        print(f"  • Note: All entries appended for manual review (no duplicate filtering)")
+        print(f"\n🔗 View your Google Sheet: https://docs.google.com/spreadsheets/d/{sheet_id}")
+
         # Show breakdown by book
         print(f"\n📋 Breakdown by book:")
         for result in results.values():
             book_info = result['book_info']
             count = result['total_entries']
             print(f"  • Book {book_info['book_id']} ({book_info['original_title']}): {count} entries")
-        
+
     except Exception as e:
         print(f"❌ Error during processing: {e}")
         import traceback

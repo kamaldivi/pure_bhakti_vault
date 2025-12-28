@@ -2,8 +2,9 @@
 """
 PDF Page Renderer - Production-ready script for rendering PDF pages to web-ready images
 
-This script reads (book_id, page_number) pairs from PostgreSQL content table
-and renders each page to optimized web-ready images with optional thumbnails.
+This script reads (book_id, page_number) pairs from PostgreSQL page_map table
+and renders ALL pages (irrespective of page_type) to optimized web-ready images
+with optional thumbnails. Output images are saved as page_number.webp in book_id folders.
 
 Requirements:
 - Python 3.10+
@@ -39,7 +40,11 @@ logger = logging.getLogger(__name__)
 
 
 class PDFPageRenderer:
-    """Production-ready PDF page renderer with PostgreSQL integration."""
+    """Production-ready PDF page renderer with PostgreSQL integration.
+
+    Renders ALL pages from page_map table irrespective of page_type.
+    Output structure: page_folder/book_id/page_number.webp
+    """
 
     def __init__(self,
                  pdf_folder: str,
@@ -47,12 +52,13 @@ class PDFPageRenderer:
                  db_config: dict,
                  dpi: int = 150,
                  image_format: str = 'webp',
-                 grayscale: bool = True,
+                 grayscale: bool = False,
                  create_thumbnails: bool = False,
                  thumb_size: Tuple[int, int] = (300, 400),
                  max_workers: int = 4,
                  restart_book_id: Optional[int] = None,
-                 cleanup_partial: bool = True):
+                 cleanup_partial: bool = True,
+                 selected_book_ids: Optional[List[int]] = None):
         """
         Initialize the PDF page renderer.
 
@@ -62,12 +68,13 @@ class PDFPageRenderer:
             db_config: Database connection parameters
             dpi: Dots per inch for rendering (default: 150)
             image_format: Output format - 'webp' or 'png' (default: 'webp')
-            grayscale: Convert to grayscale for smaller files (default: True)
+            grayscale: Convert to grayscale for smaller files (default: False - color)
             create_thumbnails: Generate thumbnail variants (default: False)
             thumb_size: Thumbnail dimensions (width, height)
             max_workers: Number of concurrent rendering threads
             restart_book_id: Skip to this book_id and higher (None = start from beginning)
             cleanup_partial: Clean up partially rendered book folders before starting
+            selected_book_ids: Process only these specific book_ids (None = process all books)
         """
         self.pdf_folder = Path(pdf_folder)
         self.page_folder = Path(page_folder)
@@ -80,6 +87,7 @@ class PDFPageRenderer:
         self.max_workers = max_workers
         self.restart_book_id = restart_book_id
         self.cleanup_partial = cleanup_partial
+        self.selected_book_ids = selected_book_ids
 
         # Validate image format
         if self.image_format not in ['webp', 'png']:
@@ -95,8 +103,9 @@ class PDFPageRenderer:
         self.page_folder.mkdir(parents=True, exist_ok=True)
 
         restart_info = f", restart_from_book_id={restart_book_id}" if restart_book_id else ""
+        selected_info = f", selected_book_ids={selected_book_ids}" if selected_book_ids else ""
         logger.info(f"Initialized renderer: DPI={dpi}, format={self.image_format}, "
-                   f"grayscale={grayscale}, thumbnails={create_thumbnails}{restart_info}")
+                   f"grayscale={grayscale}, thumbnails={create_thumbnails}{restart_info}{selected_info}")
 
     def _test_webp_support(self) -> bool:
         """Test if PIL supports WebP format."""
@@ -143,29 +152,38 @@ class PDFPageRenderer:
 
     def get_content_pages(self) -> List[Tuple[int, int, str]]:
         """
-        Retrieve (book_id, page_number, pdf_name) from content table.
-        Applies restart_book_id filtering if configured.
+        Retrieve (book_id, page_number, pdf_name) from page_map table.
+        Extracts ALL pages irrespective of page_type.
+        Applies selected_book_ids or restart_book_id filtering if configured.
+
+        Priority: selected_book_ids takes precedence over restart_book_id.
 
         Returns:
             List of tuples containing (book_id, page_number, pdf_name)
         """
-        # Build query with optional WHERE clause for restart
+        # Build query with optional WHERE clause for filtering
         where_clause = ""
         params = []
 
-        if self.restart_book_id is not None:
-            where_clause = "WHERE c.book_id >= %s"
+        if self.selected_book_ids is not None and len(self.selected_book_ids) > 0:
+            # Selected books mode: only process the specific books
+            placeholders = ','.join(['%s'] * len(self.selected_book_ids))
+            where_clause = f"WHERE pm.book_id IN ({placeholders})"
+            params = self.selected_book_ids
+        elif self.restart_book_id is not None:
+            # Restart mode: process from this book onwards
+            where_clause = "WHERE pm.book_id >= %s"
             params = [self.restart_book_id]
 
         query = f"""
         SELECT
-            c.book_id,
-            c.page_number,
+            pm.book_id,
+            pm.page_number,
             b.pdf_name
-        FROM content c
-        INNER JOIN book b ON c.book_id = b.book_id
+        FROM page_map pm
+        INNER JOIN book b ON pm.book_id = b.book_id
         {where_clause}
-        ORDER BY c.book_id, c.page_number
+        ORDER BY pm.book_id, pm.page_number
         """
 
         with self.get_database_connection() as conn:
@@ -173,16 +191,22 @@ class PDFPageRenderer:
                 cur.execute(query, params)
                 results = cur.fetchall()
 
-        if self.restart_book_id:
-            logger.info(f"Found {len(results)} pages to render (starting from book_id >= {self.restart_book_id})")
+        # Log appropriate message based on filtering mode
+        if self.selected_book_ids:
+            logger.info(f"Found {len(results)} pages to render from page_map (selected books: {self.selected_book_ids})")
+        elif self.restart_book_id:
+            logger.info(f"Found {len(results)} pages to render from page_map (starting from book_id >= {self.restart_book_id})")
         else:
-            logger.info(f"Found {len(results)} pages to render")
+            logger.info(f"Found {len(results)} pages to render from page_map")
 
         return [(row['book_id'], row['page_number'], row['pdf_name']) for row in results]
 
     def get_book_page_counts(self) -> dict:
         """
-        Get expected page counts per book from database.
+        Get expected page counts per book from page_map table.
+        Applies selected_book_ids or restart_book_id filtering if configured.
+
+        Priority: selected_book_ids takes precedence over restart_book_id.
 
         Returns:
             Dictionary mapping book_id to expected page count
@@ -190,18 +214,24 @@ class PDFPageRenderer:
         where_clause = ""
         params = []
 
-        if self.restart_book_id is not None:
-            where_clause = "WHERE c.book_id >= %s"
+        if self.selected_book_ids is not None and len(self.selected_book_ids) > 0:
+            # Selected books mode: only process the specific books
+            placeholders = ','.join(['%s'] * len(self.selected_book_ids))
+            where_clause = f"WHERE pm.book_id IN ({placeholders})"
+            params = self.selected_book_ids
+        elif self.restart_book_id is not None:
+            # Restart mode: process from this book onwards
+            where_clause = "WHERE pm.book_id >= %s"
             params = [self.restart_book_id]
 
         query = f"""
         SELECT
-            c.book_id,
+            pm.book_id,
             COUNT(*) as expected_pages
-        FROM content c
+        FROM page_map pm
         {where_clause}
-        GROUP BY c.book_id
-        ORDER BY c.book_id
+        GROUP BY pm.book_id
+        ORDER BY pm.book_id
         """
 
         with self.get_database_connection() as conn:
@@ -297,14 +327,21 @@ class PDFPageRenderer:
                 img = img.convert('L')
 
             # Save with optimization
-            save_kwargs = {
-                'optimize': True,
-                'quality': 85 if self.image_format == 'webp' else None
-            }
-
             if self.image_format == 'webp':
-                save_kwargs['method'] = 6  # Better compression
-                save_kwargs['lossless'] = False
+                # WebP quality settings
+                # For color images, use higher quality to preserve details
+                quality = 90 if not self.grayscale else 85
+                save_kwargs = {
+                    'optimize': True,
+                    'quality': quality,
+                    'method': 6,  # Better compression (slower but smaller)
+                    'lossless': False
+                }
+            else:
+                # PNG settings
+                save_kwargs = {
+                    'optimize': True
+                }
 
             img.save(output_path, self.image_format.upper(), **save_kwargs)
 
@@ -396,8 +433,9 @@ class PDFPageRenderer:
 
     def render_all_pages(self) -> dict:
         """
-        Render all pages from the content table.
+        Render all pages from the page_map table.
         Handles restart logic and partial book cleanup.
+        Processes ALL pages irrespective of page_type.
 
         Returns:
             Dictionary with rendering statistics
@@ -506,11 +544,18 @@ from io import BytesIO
 @click.option('--verbose', '-v', is_flag=True, help='Enable verbose logging')
 def main(dpi, image_format, color, thumbnails, thumb_width, thumb_height, workers, restart_book_id, cleanup, env_file, verbose):
     """
-    Render PDF pages to web-ready images based on PostgreSQL content table.
+    Render PDF pages to web-ready images based on PostgreSQL page_map table.
 
-    This script reads (book_id, page_number) pairs from the content table,
-    locates the corresponding PDF files, and renders each page to optimized
-    web-ready images. Supports WebP and PNG formats with optional thumbnails.
+    This script reads (book_id, page_number) pairs from the page_map table,
+    locates the corresponding PDF files, and renders ALL pages (irrespective
+    of page_type) to optimized web-ready images. Output structure:
+    page_folder/book_id/page_number.webp
+
+    Supports WebP and PNG formats with optional thumbnails.
+
+    Selected Books Support:
+    - Configure SELECTED_BOOKS in .env with comma-separated book IDs (e.g., 10,25,42)
+    - Only processes the specified books
 
     Restart Support:
     - Use --restart-book-id N to resume from book N onwards
@@ -549,15 +594,26 @@ def main(dpi, image_format, color, thumbnails, thumb_width, thumb_height, worker
     # Rendering configuration with CLI overrides
     render_dpi = dpi or int(os.getenv('RENDER_DPI', 150))
     render_format = image_format or os.getenv('RENDER_FORMAT', 'webp')
-    render_grayscale = not color if color is not None else os.getenv('RENDER_GRAYSCALE', 'true').lower() == 'true'
+    render_grayscale = not color if color is not None else os.getenv('RENDER_GRAYSCALE', 'false').lower() == 'true'
     create_thumbs = thumbnails if thumbnails is not None else os.getenv('CREATE_THUMBNAILS', 'false').lower() == 'true'
 
     # Restart and cleanup configuration
     restart_from_book = restart_book_id or (int(os.getenv('RESTART_BOOK_ID')) if os.getenv('RESTART_BOOK_ID') else None)
     cleanup_partial = cleanup if cleanup is not None else os.getenv('CLEANUP_PARTIAL', 'true').lower() == 'true'
 
+    # Selected books configuration - when SELECTED_BOOKS is set, only process those specific books
+    selected_books = None
+    if os.getenv('SELECTED_BOOKS'):
+        try:
+            selected_books = [int(book_id.strip()) for book_id in os.getenv('SELECTED_BOOKS').split(',')]
+        except ValueError:
+            logger.error("SELECTED_BOOKS must be comma-separated integers (e.g., 10,25,42)")
+            sys.exit(1)
+
     logger.info(f"Configuration: PDF={pdf_folder}, Pages={page_folder}, DPI={render_dpi}")
     logger.info(f"Format={render_format}, Grayscale={render_grayscale}, Thumbnails={create_thumbs}")
+    if selected_books:
+        logger.info(f"Selected books mode: Processing only book_ids = {selected_books}")
     if restart_from_book:
         logger.info(f"Restart mode: Starting from book_id >= {restart_from_book}")
     if cleanup_partial:
@@ -576,7 +632,8 @@ def main(dpi, image_format, color, thumbnails, thumb_width, thumb_height, worker
             thumb_size=(thumb_width, thumb_height),
             max_workers=workers,
             restart_book_id=restart_from_book,
-            cleanup_partial=cleanup_partial
+            cleanup_partial=cleanup_partial,
+            selected_book_ids=selected_books
         )
 
         # Render all pages

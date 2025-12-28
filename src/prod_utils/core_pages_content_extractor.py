@@ -7,14 +7,17 @@ Utility to extract content from core pages of all books and populate the content
 This utility:
 1. Scans PDF_FOLDER for all PDF files
 2. Maps PDFs to book_ids using the database
-3. Queries page_map table for pages with page_type='Core' 
+3. Queries page_map table for pages with page_type='Core'
 4. Uses PageContentExtractor to extract body content (with automatic Sanskrit glyph fixes)
 5. Inserts extracted content into the content table
 
 USAGE:
-    python core_pages_content_extractor.py
-    python core_pages_content_extractor.py --book-id 5
-    python core_pages_content_extractor.py --dry-run
+    python core_pages_content_extractor.py                     # Process all books
+    python core_pages_content_extractor.py --book-id 5         # Process only book ID 5
+    python core_pages_content_extractor.py --dry-run           # Preview without database changes
+
+ENVIRONMENT VARIABLES:
+    TEST_BOOK_ID: If set, processes only the specified book ID (overridden by --book-id)
 
 OUTPUT:
     - Direct database insertion into PostgreSQL content table
@@ -277,11 +280,16 @@ Examples:
   python core_pages_content_extractor.py --dry-run          # Preview without database changes
   python core_pages_content_extractor.py --help             # Show this help message
 
+Environment Variables:
+  TEST_BOOK_ID=41                                           # Process only book ID 41 (overridden by --book-id)
+
 The script will:
 1. Scan PDF_FOLDER for available PDF files
 2. Query page_map table for pages with page_type='Core'
 3. Extract body content using PageContentExtractor (handles Sanskrit fixes automatically)
 4. Insert extracted content into the content table
+
+Priority for book selection: --book-id > TEST_BOOK_ID > process all books
         """
     )
     
@@ -303,21 +311,30 @@ def main():
     """Main function."""
     # Parse command line arguments
     args = parse_arguments()
-    
+
     try:
         # Initialize the extractor
         extractor = CorePagesContentExtractor()
-        
+
         # Test database connection
         if not extractor.db.test_connection():
             print("❌ Failed to connect to database. Check your connection parameters.")
             return
-        
+
         print("✅ Database connection successful")
-        
+
+        # Check for TEST_BOOK_ID environment variable
+        test_book_id = int(os.getenv('TEST_BOOK_ID')) if os.getenv('TEST_BOOK_ID') else None
+
+        # Determine which book_id to use (priority: command line arg > TEST_BOOK_ID > process all)
+        target_book_id = args.book_id or test_book_id
+
+        if test_book_id and not args.book_id:
+            print(f"🎯 TEST_BOOK_ID detected: Processing only book_id = {test_book_id}")
+
         # Process books
         extractor.process_all_books(
-            specific_book_id=args.book_id,
+            specific_book_id=target_book_id,
             dry_run=args.dry_run
         )
         
